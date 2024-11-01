@@ -1,6 +1,7 @@
- const DIsplayProduct = () => {
+ const DIsplayProduct = ({item}) => {
   return (
-    <div>DIsplayProduct</div>
+    <div>
+    </div>
   )
 }
 

@@ -6,6 +6,12 @@ import DIsplayProduct from './components/DIsplayProduct'
 // import './App.css'
 
 function App() {
+  const [showDisplay,setDisplay] = useState(false)
+  const [addItem,setAddItem] = useState([])
+  function handdleShow(){
+    setDisplay(!showDisplay)
+  }
+console.log(addItem);
   return <div>
     <header className='w-full bg-black'>
       <ul className='text-white flex justify-between'>
@@ -18,10 +24,10 @@ function App() {
         <h1 className='text-white font-semibold text-4xl mb-5'>Reza Shop</h1>
       </div>
     </header>
-    <ProductList>
-      
+    <ProductList onShow={handdleShow}> 
     </ProductList>
-    <DIsplayProduct/>
+
+    {showDisplay && <DIsplayProduct/>}
   </div>
 }
 

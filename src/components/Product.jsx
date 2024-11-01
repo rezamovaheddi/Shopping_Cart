@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Product = ({el}) => {
+const Product = ({el ,onAdd}) => {
   return (
     <div>
         <div className=''>
@@ -11,7 +11,7 @@ const Product = ({el}) => {
              <span className='text-red-600 font-semibold'>{el.price}$</span>
             </div>
             <div className='flex justify-center items-center w-full bg-slate-300 p-3 rounded-md transition-shadow transition-colors hover:shadow-xl hover:bg-green-400'>
-              <button className='font-semibold text-xl text-slate-800 '>buy</button>
+              <button className='font-semibold text-xl text-slate-800' onClick={()=> onAdd(item)}>buy</button>
             </div>
             </div>
         </div>
