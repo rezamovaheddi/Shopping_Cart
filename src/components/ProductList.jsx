@@ -1,33 +1,16 @@
-const PRODUCT = [
-    {
-        name:'mobile',
-        id:1,
-        price:123,
-        image:''
-    },
-    {
-        name:'laptop',
-        id:2,
-        price:400,
-        image:''
-    },
-    {
-        name:'camera',
-        id:3,
-        price:44,
-        image:''
-    },
-    {
-        name:'shose',
-        id:5,
-        price:700,
-        image:''
-    }
-]
+import PRODUCT from "./data"
+import Product from "./Product"
 
 const ProductList = () => {
+    const ProductItem = PRODUCT
   return (
-    <div>ProductList</div>
+    <div >
+        <ul className="grid grid-cols-4 gap-5 p-6">
+            {ProductItem.map((el)=>(
+                <Product el={el} key={el.id}/>
+            ))}
+        </ul>
+    </div>
   )
 }
 export default ProductList
