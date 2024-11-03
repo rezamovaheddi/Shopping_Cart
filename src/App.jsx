@@ -17,11 +17,24 @@ function AddToCart(products) {
           item.id === products.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
-        );
+        )
       } else {
         return [...prevItems, { ...products, quantity: 1 }];
       }
     });
+
+    setCartItems(preveCart => {
+      const isCartToItem = preveCart.find(item=> item.id === products.id)
+      if(isCartToItem){
+        return preveCart.map(item=> 
+          item.id === products.id
+          ? {...item,quantity:item.quantity + 1}
+          : item
+        )
+      }else{
+        return [...preveCart, {...products,quantity:1}]
+      }
+    })
 }
   
   return <div>
@@ -36,10 +49,10 @@ function AddToCart(products) {
         <h1 className='text-white font-semibold text-4xl mb-5'>Reza Shop</h1>
       </div>
     </header>
-    <ProductList onAdd={AddToCart}> 
+    <ProductList onAdd={AddToCart} products={addProduct}> 
     </ProductList>
 
-     <DIsplayProduct/>
+     <DIsplayProduct cartItems={cartItems}/>
   </div>
 }
 
