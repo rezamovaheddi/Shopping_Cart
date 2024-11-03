@@ -13,7 +13,7 @@ function AddToCart(products) {
  setAddProduct(prevItems => {
       const existingProduct = prevItems.find(item => item.id === products.id);
       if (existingProduct) {
-         prevItems.map(item =>
+          return prevItems.map(item =>
           item.id === products.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
@@ -24,7 +24,7 @@ function AddToCart(products) {
     setCartItems(preveCart => {
       const isCartToItem = preveCart.find(item=> item.id === products.id)
       if(isCartToItem){
-        return preveCart.map(item=> 
+         return preveCart.map(item=> 
           item.id === products.id
           ? {...item,quantity:item.quantity + 1}
           : item
@@ -34,11 +34,11 @@ function AddToCart(products) {
       }
     })
 }
-function deleteItem(items){
-  setCartItems(value=>{
-    return value.filter(item => item.id == items.id)
-  })
-}
+// function deleteItem(items){
+//   setCartItems(value=>{
+//     return value.filter(item => item.id == items.id)
+//   })
+// }
 
   return <div>
     <header className='w-full bg-black'>
@@ -55,7 +55,7 @@ function deleteItem(items){
     <ProductList onAdd={AddToCart} products={addProduct}> 
     </ProductList>
 
-     <DIsplayProduct cartItems={cartItems} onDelete={deleteItem}/>
+     <DIsplayProduct cartItems={cartItems}/>
   </div>
 }
 

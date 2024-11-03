@@ -1,4 +1,6 @@
- const DIsplayProduct = ({cartItems,onDelete}) => {
+import { useState } from "react"
+
+ const DIsplayProduct = ({cartItems}) => {
   return (
     <div className="border-2">
       <h1 className="text-center text-3xl">cart</h1>
@@ -11,7 +13,8 @@
             <span>{item.name}</span>
             <span>{item.quantity}</span>
             <span>{item.price * item.quantity}$</span>
-            <button onClick={()=> onDelete(item.name)}>delete</button>
+            <button className="border-2 rounded-lg bg-red-500 w-24 text-white transition-shadow hover:shadow-xl
+            ">delete</button>
           </div>
         )
       )}
