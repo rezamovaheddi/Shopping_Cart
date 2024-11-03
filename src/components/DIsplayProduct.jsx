@@ -1,6 +1,7 @@
- const DIsplayProduct = ({item}) => {
+ const DIsplayProduct = () => {
   return (
     <div>
+      <h1></h1>
     </div>
   )
 }

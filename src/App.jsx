@@ -4,14 +4,26 @@ import ProductList from './components/ProductList'
 import PRODUCT from './components/data'
 import DIsplayProduct from './components/DIsplayProduct'
 // import './App.css'
-
 function App() {
-  const [showDisplay,setDisplay] = useState(false)
-  const [addItem,setAddItem] = useState([])
-  function handdleShow(){
-    setDisplay(!showDisplay)
-  }
-console.log(addItem);
+  const [addProduct,setAddProduct] = useState(PRODUCT)
+  const [cartItems,setCartItems] = useState([])
+
+
+function AddToCart(products) {
+ setAddProduct(prevItems => {
+      const existingProduct = prevItems.find(item => item.id === products.id);
+      if (existingProduct) {
+        return prevItems.map(item =>
+          item.id === products.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...products, quantity: 1 }];
+      }
+    });
+}
+  
   return <div>
     <header className='w-full bg-black'>
       <ul className='text-white flex justify-between'>
@@ -24,10 +36,10 @@ console.log(addItem);
         <h1 className='text-white font-semibold text-4xl mb-5'>Reza Shop</h1>
       </div>
     </header>
-    <ProductList onShow={handdleShow}> 
+    <ProductList onAdd={AddToCart}> 
     </ProductList>
 
-    {showDisplay && <DIsplayProduct/>}
+     <DIsplayProduct/>
   </div>
 }
 

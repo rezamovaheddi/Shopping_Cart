@@ -8,25 +8,29 @@ const PRODUCT = [{
         name: 'mobile',
         id: 1,
         price: 123,
-        image: mobile
+        image: mobile,
+        quantity: 0
     },
     {
         name: 'laptop',
         id: 2,
         price: 400,
-        image: laptop
+        image: laptop,
+        quantity: 0
     },
     {
         name: 'camera',
         id: 3,
         price: 44,
-        image: camera
+        image: camera,
+        quantity: 0
     },
     {
         name: 'shose',
         id: 5,
         price: 700,
-        image: shose
+        image: shose,
+        quantity: 0
     }
 ]
 export default PRODUCT
