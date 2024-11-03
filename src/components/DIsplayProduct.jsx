@@ -1,15 +1,17 @@
- const DIsplayProduct = ({cartItems}) => {
+ const DIsplayProduct = ({cartItems,onDelete}) => {
   return (
-    <div>
-      <h1>cart</h1>
+    <div className="border-2">
+      <h1 className="text-center text-3xl">cart</h1>
       {cartItems.length === 0 ? (
-        <p>Cart is empty</p>
+        <p className="text-xl text-center text-red-700 mt-4">Cart is empty</p>
       ):(
         cartItems.map(item => 
-          <div key={item.id} className="border-b p-2 flex justify-between">
+          <div key={item.id} className="border-b p-6 flex justify-between text-2xl bg-slate-300">
+            {/* <img src={item.image} alt={item.id} className="w-36"/> */}
             <span>{item.name}</span>
             <span>{item.quantity}</span>
             <span>{item.price * item.quantity}$</span>
+            <button onClick={()=> onDelete(item.name)}>delete</button>
           </div>
         )
       )}

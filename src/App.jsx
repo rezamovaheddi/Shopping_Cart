@@ -36,7 +36,12 @@ function AddToCart(products) {
       }
     })
 }
-  
+function deleteItem(items){
+  setCartItems(value=>{
+    return value.filter(item => item.id == items.id)
+  })
+}
+
   return <div>
     <header className='w-full bg-black'>
       <ul className='text-white flex justify-between'>
@@ -52,7 +57,7 @@ function AddToCart(products) {
     <ProductList onAdd={AddToCart} products={addProduct}> 
     </ProductList>
 
-     <DIsplayProduct cartItems={cartItems}/>
+     <DIsplayProduct cartItems={cartItems} onDelete={deleteItem}/>
   </div>
 }
 
