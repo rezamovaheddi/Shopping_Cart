@@ -3,7 +3,7 @@ import React from 'react'
 export const Cart = ({item,onDelete}) => {
 
   return (
-    <div className='flex justify-between'>            
+    <div className='flex justify-between '>            
     <span>{item.name}</span>
     <span>{item.quantity}</span>
     <span>{item.price * item.quantity}$</span>

@@ -6,7 +6,7 @@ import { Cart } from "./Cart"
     setCartItems((item)=> item.filter((del)=> del.id !== items.id))
 }
   return (
-    <div className="border-2">
+    <div className="border-2 ">
       <h1 className="text-center text-3xl">cart</h1>
       {cartItems.length === 0 ? (
         <p className="text-xl text-center text-red-700 mt-4">Cart is empty</p>
