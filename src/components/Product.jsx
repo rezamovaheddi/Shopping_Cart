@@ -1,10 +1,8 @@
 import React from 'react'
-import DIsplayProduct from './DIsplayProduct'
-
 const Product = ({el ,onAdd}) => {
   return (
     <div>
-        <div className=''>
+        <div className='hover:shadow-lg transition-all hover:mt-2'>
             <div className='border-4 rounded-md'>
                 <img className='w-80 p-2 m-4' src={el.image} width={100} alt={el.image}/>
             <div className='flex justify-between'>
