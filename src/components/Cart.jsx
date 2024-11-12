@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 export const Cart = ({item,onDelete}) => {
   const [addItem,setAddItem] = useState(0)
   return (
-  <div className='flex justify-between '>            
-      <span>{item.name}</span>
+  <div className='flex justify-around'>            
+      <img width={150} height={100} className='mr-4 rounded-lg' src={item.image} alt={item.name} />
+      <span className='flex text-center mr-9'>{item.name}</span>
         <button className='bg-slate-900 text-red-400 p-2' onClick={()=> setAddItem(addItem+item.quantity)}>+</button>
         <br />
       <span>{item.quantity + addItem}</span>
