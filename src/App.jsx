@@ -3,17 +3,19 @@ import viteLogo from "/vite.svg";
 import ProductList from "./components/ProductList";
 import PRODUCT from "./components/data";
 import DIsplayProduct from "./components/DIsplayProduct";
-import  Axios  from "axios";
+import Axios from "axios";
 // import './App.css'
 function App() {
   const [addProduct, setAddProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(()=>{
-    Axios.get("https://fakestoreapi.com/products").then((res)=>{
-      setAddProduct(res.data)
-    })
-  },[])
+  useEffect(() => {
+    Axios.get("https://fakestoreapi.com/products")
+      .then((res) => {
+        setAddProduct(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   function AddToCart(products) {
     setAddProduct((prevItems) => {
@@ -71,7 +73,11 @@ function App() {
           <h1 className="text-white font-semibold text-4xl mb-5">Reza Shop</h1>
         </div>
       </header>
-      <ProductList onAdd={AddToCart} products={addProduct} setAddProduct={setAddProduct} ></ProductList>
+      <ProductList
+        onAdd={AddToCart}
+        products={addProduct}
+        setAddProduct={setAddProduct}
+      ></ProductList>
 
       <DIsplayProduct cartItems={cartItems} setCartItems={setCartItems} />
     </div>
