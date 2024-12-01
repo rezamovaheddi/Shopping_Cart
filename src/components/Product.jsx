@@ -2,9 +2,9 @@ import React from "react";
 const Product = ({ el, onAdd }) => {
   return (
     <div>
-      <div className="card card-compact shadow-lg grid-cols-3 w-56  bg-gray-50 hover:bg-base-200 shadow-gray-400 rounded-2xl ">
+      <div className="shadow-lg h-full  bg-gray-50 hover:bg-base-200 shadow-gray-400 rounded-2xl ">
         <div className="">
-          <img  
+          <img
             className="w-16 p-1 m-2 md:w-32 lg:w-48"
             src={el.image}
             width={100}
