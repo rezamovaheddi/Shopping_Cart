@@ -8,7 +8,7 @@ import  Axios  from "axios";
 function App() {
   const [addProduct, setAddProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  
+
   useEffect(()=>{
     Axios.get("https://fakestoreapi.com/products").then((res)=>{
       setAddProduct(res.data)
