@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Product from "./Product";
+import Product from "../products/Product";
 
 const ProductList = ({ onAdd, products }) => {
   return (

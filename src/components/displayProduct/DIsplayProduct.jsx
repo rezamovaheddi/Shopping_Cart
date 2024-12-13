@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Cart } from "./Cart"
+import { Cart } from "../cart/Cart"
 
  const DIsplayProduct = ({cartItems,setCartItems}) => {
   function handleDelete(items){

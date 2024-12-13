@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import viteLogo from "/vite.svg";
-import ProductList from "./components/ProductList";
+import ProductList from "./components/listProduct/ProductList";
 // import PRODUCT from "./components/data";
-import DIsplayProduct from "./components/DIsplayProduct";
+import DIsplayProduct from "./components/displayProduct/DIsplayProduct";
 import Axios from "axios";
 // import './App.css'
 function App() {
