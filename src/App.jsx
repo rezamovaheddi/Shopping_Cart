@@ -11,7 +11,9 @@ function App() {
 
   useEffect(() => {
     const store = async () => {
-    await  Axios.get("https://fakestoreapi.com/products").then((res) => res.data());
+      await Axios.get("https://fakestoreapi.com/products").then((res) =>
+        setAddProduct(res.data)
+      );
     };
     store();
   }, []);
