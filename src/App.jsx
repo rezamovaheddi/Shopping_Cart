@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import viteLogo from "/vite.svg";
 import ProductList from "./components/ProductList";
-import PRODUCT from "./components/data";
+// import PRODUCT from "./components/data";
 import DIsplayProduct from "./components/DIsplayProduct";
 import Axios from "axios";
 // import './App.css'
@@ -10,11 +10,14 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    Axios.get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setAddProduct(res.data);
-      })
-      .catch((err) => console.log(err));
+    const data = async () => {
+    await Axios.get("https://fakestoreapi.com/products")
+        .then((res) => {
+          setAddProduct(res.data);
+        })
+        .catch((err) => console.log(err));
+    };
+    data()
   }, []);
 
   function AddToCart(products) {
@@ -31,14 +34,15 @@ function App() {
     setCartItems((preveCart) => {
       const isCartToItem = preveCart.find((item) => item.id === products.id);
       if (isCartToItem) {
-        return preveCart.map((item) =>
+        return preveCart.map((item) => {
           item.id === products.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+            : item;
+        });
       } else return [...preveCart, { ...products, quantity: 1 }];
     });
   }
+
   // function deleteItem(items){
   //   setCartItems(cartItems.map(item=>
   //     item.filter(value=>
