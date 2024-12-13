@@ -10,14 +10,10 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const data = async () => {
-    await Axios.get("https://fakestoreapi.com/products")
-        .then((res) => {
-          setAddProduct(res.data);
-        })
-        .catch((err) => console.log(err));
+    const store = async () => {
+    await  Axios.get("https://fakestoreapi.com/products").then((res) => res.data());
     };
-    data()
+    store();
   }, []);
 
   function AddToCart(products) {
