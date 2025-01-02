@@ -80,7 +80,6 @@ function App() {
         products={addProduct}
         setAddProduct={setAddProduct}
       ></ProductList>
-
       <DIsplayProduct cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );

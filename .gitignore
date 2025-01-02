@@ -23,3 +23,5 @@ image
 *.njsproj
 *.sln
 *.sw?
+
+.codegpt
