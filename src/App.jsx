@@ -4,6 +4,7 @@ import ProductList from "./components/listProduct/ProductList";
 // import PRODUCT from "./components/data";
 import DIsplayProduct from "./components/displayProduct/DIsplayProduct";
 import Axios from "axios";
+import AddToCart from "./addToCart";
 // import './App.css'
 function App() {
   const [addProduct, setAddProduct] = useState([]);
@@ -23,24 +24,22 @@ function App() {
       const existingProduct = prevItems.find((item) => item.id === products.id);
       if (existingProduct) {
         return prevItems.map((item) =>
-          item.id === products.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === products.id ? { ...item, quantity: item.quantity + 1 } : item
         );
-      } else [...prevItems, { ...products, quantity: 1 }];
+      } else {
+        return [...prevItems, { ...products, quantity: 1 }];
+      }
     });
-    setCartItems((preveCart) => {
-      const isCartToItem = preveCart.find((item) => item.id === products.id);
-      if (isCartToItem) {
-        return preveCart.map((item) => {
-          item.id === products.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item;
-        });
-      } else return [...preveCart, { ...products, quantity: 1 }];
+
+    setCartItems((prevCart) => {
+      const existingCartItem = prevCart.find((item) => item.id === products.id);
+      return existingCartItem
+      ? prevCart.map((item) =>
+        item.id === products.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      : [...prevCart, { ...products, quantity: 1 }];
     });
   }
-
   // function deleteItem(items){
   //   setCartItems(cartItems.map(item=>
   //     item.filter(value=>
