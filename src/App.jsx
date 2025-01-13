@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import viteLogo from "/vite.svg";
 import ProductList from "./components/listProduct/ProductList";
 // import PRODUCT from "./components/data";
 import DIsplayProduct from "./components/displayProduct/DIsplayProduct";
 import Axios from "axios";
-import AddToCart from "./addToCart";
+import IsLoading from "./components/loading/Loading";
+
 // import './App.css'
 function App() {
   const [addProduct, setAddProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-
+  const [isLoading,setIsLoading] = useState(false)
   useEffect(() => {
+    setIsLoading(true)
     const store = async () => {
       await Axios.get("https://fakestoreapi.com/products").then((res) =>
         setAddProduct(res.data)
       );
+      setIsLoading(false)
     };
     store();
   }, []);
@@ -74,11 +76,11 @@ function App() {
           <h1 className="text-white font-semibold text-4xl mb-5">Reza Shop</h1>
         </div>
       </header>
-      <ProductList
+      { isLoading ? <IsLoading/> : <ProductList
         onAdd={AddToCart}
         products={addProduct}
         setAddProduct={setAddProduct}
-      ></ProductList>
+      ></ProductList>}
       <DIsplayProduct cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );

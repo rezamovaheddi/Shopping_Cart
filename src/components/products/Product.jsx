@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react"
 // import '@rigo-m/react-split-text'
 import { SplitText } from "@rigo-m/react-split-text";
 const Product = ({ el, onAdd }) => {
@@ -18,14 +19,22 @@ const Product = ({ el, onAdd }) => {
             <span className="text-xs font-bold ml-2">{el.name}</span>
             <span className="text-red-600 font-semibold">{el.price}$</span>
           </div>
-          <div className="flex justify-center items-center w-full bg-slate-300 p-3 rounded-md  hover:shadow-xl hover:bg-green-400">
+          <motion.div 
+           whileHover={{scale: 1.1}}
+           whileTap={{ scale: 0.95 }}
+          className="flex justify-center items-center w-full bg-slate-300 p-3 rounded-md  hover:shadow-xl hover:bg-green-400">
+            <motion.button 
+            whileHover={{scale: 1.1}}
+            whileTap={{ scale: 0.95 }}
+            >
             <button
               className="font-semibold text-xl w-auto h-auto  text-slate-800"
               onClick={() => onAdd(el)}
             >
               buy
             </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </div>
