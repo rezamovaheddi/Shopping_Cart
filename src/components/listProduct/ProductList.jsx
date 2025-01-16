@@ -18,9 +18,9 @@ const ProductList = ({ onAdd, products }) => {
             <option value="name">Name</option>
           </select>
       </div>
-      <ul className="grid grid-cols-4 gap-5 p-6">
+      <ul className="grid grid-cols-4 gap-5 p-6 ">
         {selectedItems.map((el) => (
-          <Product el={el} key={el.id} onAdd={onAdd} />
+          <Product  el={el} key={el.id} onAdd={onAdd} />
         ))}
       </ul>
     </div>

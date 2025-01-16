@@ -5,40 +5,26 @@ import { SplitText } from "@rigo-m/react-split-text";
 const Product = ({ el, onAdd }) => {
   const text = el.title;
   return (
-    <div>
-      <div className="shadow-lg h-auto bg-gray-50 hover:bg-base-200 shadow-gray-400 rounded-2xl ">
-        <div>
-          <img
-            className="w-16 p-1 m-2 md:w-32 lg:w-48"
-            src={el.image}
-            width={150}
-            alt={el.image}
-          />
-          <span>{text.slice(0, 19)}</span>
-          <div className="flex justify-between">
-            <span className="text-xs font-bold ml-2">{el.name}</span>
-            <span className="text-red-600 font-semibold">{el.price}$</span>
-          </div>
-          <motion.div 
-           whileHover={{scale: 1.1}}
-           whileTap={{ scale: 0.95 }}
-          className="flex justify-center items-center w-full bg-slate-300 p-3 rounded-md  hover:shadow-xl hover:bg-green-400">
-            <motion.button 
-            whileHover={{scale: 1.1}}
-            whileTap={{ scale: 0.95 }}
-            >
-            <button
-              className="font-semibold text-xl w-auto h-auto  text-slate-800"
-              onClick={() => onAdd(el)}
-            >
-              buy
-            </button>
-            </motion.button>
-          </motion.div>
-        </div>
-      </div>
+    <div className="card card-compact bg-base-100 w-96 shadow-xl shadow-white border-2 border-white">
+    <figure>
+      <img
+       src={el.image}
+       width={150}
+       alt={el.image}/>
+    </figure>
+    <div className="card-body">
+      <h2 className="card-title">{el.title}</h2>
+      <p>{el.name}</p>
+      <motion.div className="card-actions justify-end"
+        whileHover={{scale: 1.1}}
+        whileTap={{ scale: 0.95 }}
+      >
+        <button className="btn btn-primary" onClick={() => onAdd(el)}>Buy Now</button>
+      </motion.div>
     </div>
-  );
+  </div>
+  )
 };
 
 export default Product;
+
