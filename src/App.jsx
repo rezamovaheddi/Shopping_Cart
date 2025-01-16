@@ -1,24 +1,31 @@
 import { useEffect, useState } from "react";
 import ProductList from "./components/listProduct/ProductList";
-// import PRODUCT from "./components/data";
+import  Error  from "./components/messages/Error";
 import DIsplayProduct from "./components/displayProduct/DIsplayProduct";
 import Axios from "axios";
-import IsLoading from "./components/loading/Loading";
+import IsLoading from "./components/messages/Loading";
 
 // import './App.css'
 function App() {
   const [addProduct, setAddProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [isLoading,setIsLoading] = useState(false)
+  const [error,setError] = useState('')
   useEffect(() => {
-    setIsLoading(true)
     const store = async () => {
-      await Axios.get("https://fakestoreapi.com/products").then((res) =>
+      try{
+        setIsLoading(true)
+        const res =  await Axios.get("https://fakestoreapi.com/products")
         setAddProduct(res.data)
-      );
-      setIsLoading(false)
-    };
-    store();
+
+        setIsLoading(false)
+      }catch(err){
+        console.error(err)
+        setError(err)
+      }
+    }
+
+      store();
   }, []);
 
   function AddToCart(products) {
@@ -73,14 +80,23 @@ function App() {
           </svg>
         </ul>
         <div className="flex justify-center items-center p-16">
-          <h1 className="text-white font-semibold text-4xl mb-5">Reza Shop</h1>
+          <h1 className="text-white  font-semibold text-4xl mb-5">Reza Shop</h1>
         </div>
       </header>
-      { isLoading ? <IsLoading/> : <ProductList
+      {/* { isLoading ? <IsLoading/> : <ProductList
+        onAdd={AddToCart}
+        products={addProduct}
+        setAddProduct={setAddProduct}
+      ></ProductList>} */}
+      {error && <Error message={error}/>}
+      {isLoading && <IsLoading />}
+      {!error && !isLoading && 
+      <ProductList
         onAdd={AddToCart}
         products={addProduct}
         setAddProduct={setAddProduct}
       ></ProductList>}
+      
       <DIsplayProduct cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );
