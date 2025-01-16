@@ -74,7 +74,10 @@ function App() {
         setAddProduct={setAddProduct}
       ></ProductList>}
       
-      <DIsplayProduct cartItems={cartItems} setCartItems={setCartItems} />
+      <DIsplayProduct 
+    cartItems={cartItems}           setCartItems={setCartItems}
+
+    />
     </div>
   );
 }
