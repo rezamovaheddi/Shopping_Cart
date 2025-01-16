@@ -36,7 +36,7 @@ function App() {
           item.id === products.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        return [...prevItems, { ...products, quantity: 1 }];
+        return [...prevItems, { ...products, quantity: +1 }];
       }
     });
 
