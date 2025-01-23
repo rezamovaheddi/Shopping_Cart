@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductList from "./components/listProduct/ProductList";
 import  Error  from "./components/messages/Error";
 import DIsplayProduct from "./components/displayProduct/DIsplayProduct";
-import Axios from "axios";
+import axios from "axios";
 import IsLoading from "./components/messages/Loading";
 import Navbar from './components/header/Navbar'
 // import './App.css'
@@ -11,13 +11,17 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading,setIsLoading] = useState(false)
   const [error,setError] = useState('')
+  const [query,setQuery] = useState('')
   useEffect(() => {
     const store = async () => {
       try{
         setIsLoading(true)
-        const res =  await Axios.get("https://fakestoreapi.com/products")
-        setAddProduct(res.data)
-
+        const res =  await axios.get(`https://dummyjson.com/products/search?q=${query}`)
+        setAddProduct(res.data.products)
+        
+        if(query.length ===''){
+          setAddProduct('')
+        }
         setIsLoading(false)
       }catch(err){
         console.error(err)
@@ -26,7 +30,7 @@ function App() {
     }
 
       store();
-  }, []);
+  }, [query]);
 
   function AddToCart(products) {
     setAddProduct((prevItems) => {
@@ -59,7 +63,7 @@ function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar query={query} setQuery={setQuery}/>
       {/* { isLoading ? <IsLoading/> : <ProductList
         onAdd={AddToCart}
         products={addProduct}
