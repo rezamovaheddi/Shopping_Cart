@@ -1,6 +1,6 @@
 import React, { useEffect ,useState} from 'react'
 
-const Navbar = () => {
+const Navbar = ({query,setQuery}) => {
     const [isScrolled, setScrolled] = useState(false);
     useEffect(() => {
         // Adding the scroll listener
@@ -22,7 +22,8 @@ const handleScroll = () => {
 }
   return  <>
    <div>
-      {<div className="navbar bg-base-100 glass">
+   <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"  value={query} onChange={(e)=> setQuery(e.target.value)}/>
+        <div className="navbar bg-base-100 glass">
             <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -85,7 +86,7 @@ const handleScroll = () => {
             </button>
             </div>
             </div>
-        }        
+               
     </div>
 
   </>
