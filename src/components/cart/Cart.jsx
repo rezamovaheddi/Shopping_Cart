@@ -20,7 +20,7 @@ export const Cart = ({ item, onDelete }) => {
             +
           </button>
           <br />
-          <span>{item.quantity + item.quantity}</span>
+          <span>{addItem + 1}</span>
           <button
             className="bg-slate-900 text-red-400 w-12 h-10  rounded-full ml-2"
             onClick={() => setAddItem(addItem - item.quantity)}
