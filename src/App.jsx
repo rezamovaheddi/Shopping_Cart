@@ -11,11 +11,12 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading,setIsLoading] = useState(false)
   const [error,setError] = useState('')
+  const [query,setQuery] = useState('')
   useEffect(() => {
     const store = async () => {
       try{
         setIsLoading(true)
-        const res =  await Axios.get("https://fakestoreapi.com/products")
+        const res =  await Axios.get(`https://fakestoreapi.com/products?title=${query}`)
         setAddProduct(res.data)
 
         setIsLoading(false)
@@ -26,7 +27,7 @@ function App() {
     }
 
       store();
-  }, []);
+  }, [query]);
 
   function AddToCart(products) {
     setAddProduct((prevItems) => {
@@ -59,7 +60,7 @@ function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar query={query} setQuery={setQuery}/>
       {/* { isLoading ? <IsLoading/> : <ProductList
         onAdd={AddToCart}
         products={addProduct}
