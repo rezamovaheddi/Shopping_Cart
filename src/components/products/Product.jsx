@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "motion/react"
 // import '@rigo-m/react-split-text'
-import { SplitText } from "@rigo-m/react-split-text";
-const Product = ({ el, onAdd }) => {
+import  Details  from "./details/Details";
+const Product = ({ el, onAdd ,openModal,onSelect }) => {
   const text = el.title;
   return (
     <div className="card card-compact bg-base-100 w-96 shadow-xl shadow-white border-2 border-white">
+      {openModal && <Details el={el} onSelect={onSelect}/>}
     <figure>
       <img
        src={el.image}
@@ -19,7 +20,11 @@ const Product = ({ el, onAdd }) => {
         whileHover={{scale: 1.1}}
         whileTap={{ scale: 0.95 }}
       >
+        <div onClick={()=> onSelect(el.id)}>
+        <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>Show Detail</button>
+        </div>
         <button className="btn btn-primary" onClick={() => onAdd(el)}>Buy Now</button>
+
       </motion.div>
     </div>
   </div>

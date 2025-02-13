@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import {  useState } from "react";
 import Product from "../products/Product";
 
-const ProductList = ({ onAdd, products }) => {
-  const [selectBy,setSelectBy] = useState('name')  
+const ProductList = ({ onAdd, products, onSelect }) => {
+  const [IsopenModal ,setIsOpenModal] = useState(false)
+  const [selectBy,setSelectBy] = useState('')  
   let selectedItems;
   if(selectBy==='name') selectedItems = [...products].sort()
   selectedItems = [...products].sort((a, b) => a.price - b.price)
@@ -20,7 +21,7 @@ const ProductList = ({ onAdd, products }) => {
       </div>
       <ul className="grid grid-cols-4 gap-5 p-6 ">
         {selectedItems.map((el) => (
-          <Product  el={el} key={el.id} onAdd={onAdd} />
+          <Product onSelect={onSelect} openModal={IsopenModal} setOpenModal={setIsOpenModal} el={el} key={el.id} onAdd={onAdd} />
         ))}
       </ul>
     </div>

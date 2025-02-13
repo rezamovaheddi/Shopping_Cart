@@ -12,13 +12,17 @@ function App() {
   const [isLoading,setIsLoading] = useState(false)
   const [error,setError] = useState('')
   const [query,setQuery] = useState('')
+  const [selectedId,setSelectdId] = useState(null)
+  
+  function handleSelect(id){
+    setSelectdId(id)
+  }
   useEffect(() => {
     const store = async () => {
       try{
         setIsLoading(true)
         const res =  await Axios.get(`https://fakestoreapi.com/products?title=${query}`)
         setAddProduct(res.data)
-
         setIsLoading(false)
       }catch(err){
         console.error(err)
@@ -73,11 +77,12 @@ function App() {
         onAdd={AddToCart}
         products={addProduct}
         setAddProduct={setAddProduct}
+        onSelect={setSelectdId}
       ></ProductList>}
       
       <DIsplayProduct 
-    cartItems={cartItems}           setCartItems={setCartItems}
-
+      cartItems={cartItems} 
+      setCartItems={setCartItems}
     />
     </div>
   );
